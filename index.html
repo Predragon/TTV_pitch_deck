@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Third Voice - Strategic Pitch Deck</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .slide {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .slide:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .slide-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .slide-number {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .slide-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin: 0;
+        }
+
+        .cover-slide {
+            text-align: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 60px 40px;
+        }
+
+        .cover-slide h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .cover-slide .subtitle {
+            font-size: 24px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .cover-slide .founder {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .cover-slide .website {
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+
+        .cover-slide .funding {
+            font-size: 22px;
+            font-weight: 600;
+            padding: 15px 30px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 8px;
+            display: inline-block;
+        }
+
+        .metric {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            margin: 5px;
+            font-weight: 600;
+        }
+
+        .metric-large {
+            font-size: 32px;
+            font-weight: 700;
+            color: #667eea;
+            display: block;
+            margin: 10px 0;
+        }
+
+        .problem-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            transform: scale(1);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: scale(1.05);
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .competitive-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .competitive-table th,
+        .competitive-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .competitive-table th {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            font-weight: 600;
+        }
+
+        .competitive-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        .edge-points {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+
+        .edge-points h4 {
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .edge-points ul {
+            list-style: none;
+        }
+
+        .edge-points li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .edge-points li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #4CAF50;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .quote {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            font-style: italic;
+            font-size: 18px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .roadmap {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .roadmap-item {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .roadmap-date {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .roadmap-features {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .traction-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .traction-card {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .traction-number {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .funding-breakdown {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .funding-item {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .contact-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .vision-timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .vision-item {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .vision-year {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .slide {
+                padding: 20px;
+                margin-bottom: 20px;
+            }
+            
+            .slide-header {
+                flex-direction: column;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            
+            .slide-number {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+            
+            .slide-title {
+                font-size: 22px;
+                text-align: center;
+            }
+            
+            .cover-slide {
+                padding: 40px 20px;
+            }
+            
+            .cover-slide h1 {
+                font-size: 32px;
+                line-height: 1.2;
+            }
+            
+            .cover-slide .subtitle {
+                font-size: 18px;
+                line-height: 1.4;
+            }
+            
+            .cover-slide .founder,
+            .cover-slide .website {
+                font-size: 16px;
+            }
+            
+            .cover-slide .funding {
+                font-size: 18px;
+                padding: 12px 20px;
+            }
+            
+            .problem-stats {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .stat-card {
+                padding: 20px;
+            }
+            
+            .stat-number {
+                font-size: 28px;
+            }
+            
+            .competitive-table {
+                font-size: 12px;
+            }
+            
+            .competitive-table th,
+            .competitive-table td {
+                padding: 8px;
+            }
+            
+            .roadmap {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .roadmap-item {
+                padding: 20px;
+            }
+            
+            .traction-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .traction-card {
+                padding: 20px;
+            }
+            
+            .traction-number {
+                font-size: 24px;
+            }
+            
+            .funding-breakdown {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .funding-item {
+                padding: 15px;
+            }
+            
+            .vision-timeline {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .vision-item {
+                padding: 15px;
+            }
+            
+            .contact-details {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            
+            .edge-points {
+                padding: 20px;
+            }
+            
+            .edge-points h4 {
+                font-size: 18px;
+            }
+            
+            .metric-large {
+                font-size: 24px;
+                text-align: center;
+            }
+            
+            .metric {
+                display: block;
+                margin: 8px 0;
+                text-align: center;
+            }
+            
+            .quote {
+                font-size: 16px;
+                padding: 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .cover-slide h1 {
+                font-size: 28px;
+            }
+            
+            .cover-slide .subtitle {
+                font-size: 16px;
+            }
+            
+            .slide-title {
+                font-size: 20px;
+            }
+            
+            .stat-number {
+                font-size: 24px;
+            }
+            
+            .competitive-table {
+                font-size: 10px;
+            }
+            
+            .competitive-table th,
+            .competitive-table td {
+                padding: 6px;
+            }
+            
+            .traction-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .funding-breakdown {
+                grid-template-columns: 1fr;
+            }
+            
+            .metric-large {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Slide 1: Cover -->
+        <div class="slide cover-slide">
+            <h1>The Third Voice</h1>
+            <div class="subtitle">AI-Powered Communication Assistant for High-Conflict Relationships</div>
+            <div class="founder">Predrag Mirkovic – Founder</div>
+            <div class="website">www.thethirdvoice.ai</div>
+            <div class="funding">Raising $2M Seed | MVP Launching Q4 2025</div>
+        </div>
+
+        <!-- Slide 2: Mission & Origin -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="slide-number">2</div>
+                <h2 class="slide-title">Mission & Origin Story</h2>
+            </div>
+            <div class="metric-large">Mission: Prevent relationship breakdown through better communication — one message at a time.</div>
+            <h3 style="margin: 30px 0 20px 0; color: #667eea;">Founder's Story</h3>
+            <p style="font-size: 18px; line-height: 1.8;">In 2024, while detained and isolated from family, I realized text messages were making things worse. Miscommunication—not lack of love—was killing connection. That moment seeded The Third Voice: a digital mediator to translate emotion and intent.</p>
+        </div>
+
+        <!-- Slide 3: The Problem -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="slide-number">3</div>
+                <h2 class="slide-title">The Problem</h2>
+            </div>
+            <p style="font-size: 20px; margin-bottom: 30px; color: #2c3e50;">Digital messages misfire—causing conflict, legal costs, and emotional toll:</p>
+            <div class="problem-stats">
+                <div class="stat-card">
+                    <div class="stat-number">54M</div>
+                    <div class="stat-label">divorced or separated adults in the U.S.</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">15M</div>
+                    <div class="stat-label">co-parents: avg. $8,400/year in conflict costs</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">2.3M</div>
+                    <div class="stat-label">monthly searches: "communicate better with my ex"</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">73%</div>
+                    <div class="stat-label">experience monthly escalation from texting</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: The Solution -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="slide-number">4</div>
+                <h2 class="slide-title">The Solution</h2>
+            </div>
+            <div class="metric-large">The Third Voice rewrites emotionally charged messages to prevent fights:</div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 30px 0;">
+                <div class="metric">Real-time rewrite suggestions</div>
+                <div class="metric">Tone classification</div>
+                <div class="metric">Sentiment tracking</div>
+                <div class="metric">Court-ready documentation</div>
+            </div>
+            <div class="quote">
+                "For the first time in months, our conversation stayed about our kid—not our past." – Beta User
+            </div>
+        </div>
+
+        <!-- Slide 5: Market Opportunity -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="slide-number">5</div>
+                <h2 class="slide-title">Market Opportunity</h2>
+            </div>
+            <div class="problem-stats">
+                <div class="stat-card">
+                    <div class="stat-number">$2.8B</div>
+                    <div class="stat-label">addressable market in emotional AI and co-parenting tools</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">89%</div>
+                    <div class="stat-label">of surveyed co-parents would pay $15–25/month</div>
+                </div>
+            </div>
+            <p style="font-size: 18px; margin-top: 30px; text-align: center;">Expansion into therapy, HR, healthcare, and customer support markets by 2027</p>
+        </div>
+
+        <!-- Slide 6: Competitive Landscape -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="slide-number">6</div>
+                <h2 class="slide-title">Competitive Landscape</h2>
+            </div>
+            <h3 style="margin-bottom: 20px; color: #667eea;">Direct Competitors:</h3>
+            <table class="competitive-table">
+                <thead>
+                    <tr>
+                        <th>Company</th>
+                        <th>Price (per user/month)</th>
+                        <th>Users</th>
+                        <th>Weakness</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Our Family Wizard</td>
+                        <td>$8.25</td>
+                        <td>~300K</td>
+                        <td>No real-time AI</td>
+                    </tr>
+                    <tr>
+                        <td>Talking Parents</td>
+                        <td>$9.92</td>
+                        <td>~150K</td>
+                        <td>Basic logging only</td>
+                    </tr>
+                    <tr>
+                        <td>2Houses</td>
+                        <td>$8.25</td>
+                        <td>~200K</td>
+                        <td>Scheduling focus</td>
+                    </tr>
+                    <tr>
+                        <td>AppClose</td>
+                        <td>Free</td>
+                        <td>~100K+</td>
+                        <td>Limited AI support</td>
+                    </tr>
+                    <tr>
+                        <td>Coparently</td>
+                        <td>$9.99</td>
+                        <td>N/A</td>
+                        <td>No emotional analysis</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="edge-points">
+                <h4>Our Edge:</h4>
+                <ul>
+                    <li>Emotional intelligence AI trained on family conflict data</li>
+                    <li>Relationship-specific memory improves over time</li>
+                    <li>HIPAA-compliant, court-admissible reporting</li>
+                    <li>Therapist-validated tone model with 87% accuracy</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 7: Product Roadmap -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="slide-number">7</div>
+                <h2 class="slide-title">Product Roadmap</h2>
+            </div>
+            <div class="roadmap">
+                <div class="roadmap-item">
+                    <div class="roadmap-date">Q4 2025</div>
+                    <div class="roadm
